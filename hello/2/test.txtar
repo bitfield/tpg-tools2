@@ -1,0 +1,2 @@
+! exec go run main.go
+stderr 'package hello2 is not in GOROOT'
