@@ -1,18 +1,17 @@
-package hello_test
+package hello3_test
 
 import (
 	"bytes"
-	"hello"
-	"io"
+	hello "hello3"
 	"testing"
 )
 
-func TestPrintsHelloMessageToWriter(t *testing.T) {
+func TestPrintTo_PrintsHelloMessageToSuppliedWriter(t *testing.T) {
 	t.Parallel()
-	fakeTerminal := &bytes.Buffer{}
-	hello.PrintTo(io.Writer(fakeTerminal))
-	want := "Hello, world"
-	got := fakeTerminal.String()
+	buf := new(bytes.Buffer)
+	hello.PrintTo(buf)
+	want := "Hello, world\n"
+	got := buf.String()
 	if want != got {
 		t.Errorf("want %q, got %q", want, got)
 	}

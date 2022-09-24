@@ -1,4 +1,4 @@
-package hello
+package hello3
 
 import (
 	"fmt"
@@ -6,5 +6,5 @@ import (
 )
 
 func PrintTo(w io.Writer) {
-	fmt.Fprint(w, "Hello, world")
+	fmt.Fprintln(w, "Hello, world")
 }
