@@ -1,9 +1,9 @@
 package main
 
 import (
-	"hello"
+	"greet"
 )
 
 func main() {
-	hello.Main()
+	greet.Main()
 }

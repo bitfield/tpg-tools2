@@ -1,0 +1,7 @@
+stdin input.txt
+exec greet
+stdout 'What is your name\?\n'
+stdout 'Hello, Sam.\n'
+
+-- input.txt --
+Sam

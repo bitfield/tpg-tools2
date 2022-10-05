@@ -1,0 +1,15 @@
+exec go test
+
+exec go run ./cmd/greet/main.go
+stdout 'What is your name\?\n'
+stdout 'Hello, you.\n'
+! stderr .
+
+stdin input.txt
+exec go run ./cmd/greet/main.go
+stdout 'What is your name\?\n'
+stdout 'Hello, test user.\n'
+! stderr .
+
+-- input.txt --
+test user
