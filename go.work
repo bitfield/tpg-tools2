@@ -1,0 +1,11 @@
+go 1.19
+
+use (
+	./clock/1
+	./count/1
+	./count/2
+	./hello/1
+	./hello/2
+	./hello/3
+	./hello/4
+)

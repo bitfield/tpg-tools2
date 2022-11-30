@@ -2,11 +2,12 @@ package hello3_test
 
 import (
 	"bytes"
-	hello "hello3"
 	"testing"
+
+	hello "hello3"
 )
 
-func TestPrintTo_PrintsHelloMessageToSuppliedWriter(t *testing.T) {
+func TestPrintTo_PrintsHelloMessageToGivenWriter(t *testing.T) {
 	t.Parallel()
 	buf := new(bytes.Buffer)
 	hello.PrintTo(buf)

@@ -1,8 +1,9 @@
 package main
 
 import (
-	hello "hello3"
 	"os"
+
+	hello "hello3"
 )
 
 func main() {

@@ -1,2 +1,2 @@
-! exec go run main.go
-stderr 'package hello2 is not in GOROOT'
+exec go run cmd/hello/main.go
+stdout 'Hello, world'

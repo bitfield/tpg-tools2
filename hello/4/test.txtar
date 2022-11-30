@@ -1,0 +1,5 @@
+exec go test
+
+exec go run ./cmd/hello/main.go
+stdout 'Hello, world\n'
+! stderr .
