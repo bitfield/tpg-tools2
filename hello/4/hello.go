@@ -1,4 +1,4 @@
-package hello4
+package hello
 
 import (
 	"fmt"
@@ -20,6 +20,6 @@ func (p *Printer) Print() {
 	fmt.Fprintln(p.Output, "Hello, world")
 }
 
-func Print() {
+func Main() {
 	NewPrinter().Print()
 }

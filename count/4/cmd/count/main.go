@@ -2,9 +2,9 @@ package main
 
 import (
 	"count"
-	"fmt"
+	"os"
 )
 
 func main() {
-	fmt.Println(count.Lines())
+	os.Exit(count.Main())
 }

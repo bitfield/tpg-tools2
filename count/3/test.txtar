@@ -1,0 +1,8 @@
+stdin input.txt
+exec go run cmd/count/main.go
+stdout '3\n'
+
+-- input.txt --
+this input
+contains
+three lines

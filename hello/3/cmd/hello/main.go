@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	hello "hello3"
+	"hello"
 )
 
 func main() {

@@ -7,14 +7,14 @@ import (
 	"os"
 )
 
-func GreetUser(input io.Reader, output io.Writer) {
+func GreetUser(stdin io.Reader, stdout io.Writer) {
 	name := "you"
-	fmt.Fprintln(output, "What is your name?")
-	scanner := bufio.NewScanner(input)
-	if scanner.Scan() {
-		name = scanner.Text()
+	fmt.Fprintln(stdout, "What is your name?")
+	input := bufio.NewScanner(stdin)
+	if input.Scan() {
+		name = input.Text()
 	}
-	fmt.Fprintf(output, "Hello, %s.\n", name)
+	fmt.Fprintf(stdout, "Hello, %s.\n", name)
 }
 
 func Main() int {

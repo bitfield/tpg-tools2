@@ -65,20 +65,21 @@ func NewCounter(opts ...option) (counter, error) {
 
 func (c counter) Lines() int {
 	lines := 0
-	scanner := bufio.NewScanner(c.input)
-	for scanner.Scan() {
+	input := bufio.NewScanner(c.input)
+	for input.Scan() {
 		lines++
 	}
 	return lines
 }
 
-func Lines() int {
+func Main() int {
 	c, err := NewCounter(
 		WithInputFromArgs(os.Args[1:]),
 	)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
-		os.Exit(1)
+		return 1
 	}
-	return c.Lines()
+	fmt.Println(c.Lines())
+	return 0
 }

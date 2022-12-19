@@ -8,8 +8,8 @@ import (
 
 func main() {
 	lines := 0
-	scanner := bufio.NewScanner(os.Stdin)
-	for scanner.Scan() {
+	input := bufio.NewScanner(os.Stdin)
+	for input.Scan() {
 		lines++
 	}
 	fmt.Println(lines)

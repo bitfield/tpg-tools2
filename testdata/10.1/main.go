@@ -15,10 +15,10 @@ func main() {
 		log.Fatal(err)
 	}
 	defer f.Close()
-	scanner := bufio.NewScanner(f)
+	input := bufio.NewScanner(f)
 	uniques := map[string]int{}
-	for scanner.Scan() {
-		fields := strings.Fields(scanner.Text())
+	for input.Scan() {
+		fields := strings.Fields(input.Text())
 		if len(fields) > 0 {
 			uniques[fields[0]]++
 		}

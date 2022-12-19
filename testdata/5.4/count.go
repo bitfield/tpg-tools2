@@ -76,8 +76,8 @@ func NewCounter(opts ...option) (counter, error) {
 
 func (c counter) Lines() int {
 	count := 0
-	scanner := bufio.NewScanner(c.input)
-	for scanner.Scan() {
+	input := bufio.NewScanner(c.input)
+	for input.Scan() {
 		count++
 	}
 	return count
@@ -85,9 +85,9 @@ func (c counter) Lines() int {
 
 func (c counter) Words() int {
 	count := 0
-	scanner := bufio.NewScanner(c.input)
-	scanner.Split(bufio.ScanWords)
-	for scanner.Scan() {
+	input := bufio.NewScanner(c.input)
+	input.Split(bufio.ScanWords)
+	for input.Scan() {
 		count++
 	}
 	return count

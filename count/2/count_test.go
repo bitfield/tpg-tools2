@@ -1,9 +1,10 @@
-package count2_test
+package count_test
 
 import (
 	"bytes"
-	count "count2"
 	"testing"
+
+	"count"
 )
 
 func TestLines(t *testing.T) {

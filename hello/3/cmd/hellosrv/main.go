@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	hello "hello3"
+	"hello"
 )
 
 func main() {

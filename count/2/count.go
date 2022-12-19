@@ -1,7 +1,8 @@
-package count2
+package count
 
 import (
 	"bufio"
+	"fmt"
 	"io"
 	"os"
 )
@@ -18,13 +19,13 @@ func NewCounter() counter {
 
 func (c counter) Lines() int {
 	lines := 0
-	scanner := bufio.NewScanner(c.Input)
-	for scanner.Scan() {
+	input := bufio.NewScanner(c.Input)
+	for input.Scan() {
 		lines++
 	}
 	return lines
 }
 
-func Lines() int {
-	return NewCounter().Lines()
+func Main() {
+	fmt.Println(NewCounter().Lines())
 }

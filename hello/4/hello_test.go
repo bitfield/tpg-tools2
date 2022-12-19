@@ -1,9 +1,10 @@
-package hello4_test
+package hello_test
 
 import (
 	"bytes"
-	hello "hello4"
 	"testing"
+
+	"hello"
 )
 
 func TestPrintsHelloMessageToWriter(t *testing.T) {

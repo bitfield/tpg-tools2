@@ -1,7 +1,7 @@
 package main
 
 import (
-	hello "hello2"
+	"hello"
 )
 
 func main() {

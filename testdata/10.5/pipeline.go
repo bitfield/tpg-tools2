@@ -46,9 +46,9 @@ func (p *Pipeline) Column(col int) *Pipeline {
 		p.Error = fmt.Errorf("bad column %d: must be positive", col)
 	}
 	result := &bytes.Buffer{}
-	scanner := bufio.NewScanner(p.Reader)
-	for scanner.Scan() {
-		fields := strings.Fields(scanner.Text())
+	input := bufio.NewScanner(p.Reader)
+	for input.Scan() {
+		fields := strings.Fields(input.Text())
 		if len(fields) < col {
 			continue
 		}

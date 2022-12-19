@@ -1,9 +1,9 @@
 package main
 
 import (
-	hello "hello4"
+	"hello"
 )
 
 func main() {
-	hello.Print()
+	hello.Main()
 }

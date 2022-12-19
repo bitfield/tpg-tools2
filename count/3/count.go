@@ -3,6 +3,7 @@ package count
 import (
 	"bufio"
 	"errors"
+	"fmt"
 	"io"
 	"os"
 )
@@ -50,17 +51,17 @@ func NewCounter(opts ...option) (counter, error) {
 
 func (c counter) Lines() int {
 	lines := 0
-	scanner := bufio.NewScanner(c.input)
-	for scanner.Scan() {
+	input := bufio.NewScanner(c.input)
+	for input.Scan() {
 		lines++
 	}
 	return lines
 }
 
-func Lines() int {
+func Main() {
 	c, err := NewCounter()
 	if err != nil {
-		panic("internal error")
+		panic(err)
 	}
-	return c.Lines()
+	fmt.Println(c.Lines())
 }

@@ -1,4 +1,4 @@
-package hello3
+package hello
 
 import (
 	"fmt"
