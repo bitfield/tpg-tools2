@@ -1,0 +1,9 @@
+exec go test
+stdin input.txt
+exec go run cmd/match/main.go TARGET
+stdout '^contains the TARGET\n'
+
+-- input.txt --
+this input
+contains the TARGET
+on one matching line

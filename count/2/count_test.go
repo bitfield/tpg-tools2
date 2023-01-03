@@ -2,12 +2,11 @@ package count_test
 
 import (
 	"bytes"
-	"testing"
-
 	"count"
+	"testing"
 )
 
-func TestLines(t *testing.T) {
+func TestLinesCountsLinesInInput(t *testing.T) {
 	t.Parallel()
 	c := count.NewCounter()
 	c.Input = bytes.NewBufferString("1\n2\n3")

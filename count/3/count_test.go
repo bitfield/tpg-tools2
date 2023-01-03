@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func TestLines(t *testing.T) {
+func TestLinesCountsLinesInInput(t *testing.T) {
 	t.Parallel()
 	inputBuf := bytes.NewBufferString("1\n2\n3")
 	c, err := count.NewCounter(

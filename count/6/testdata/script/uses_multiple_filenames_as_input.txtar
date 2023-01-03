@@ -1,0 +1,8 @@
+exec count input1.txt input2.txt
+stdout '^3\n$'
+
+-- input1.txt --
+this input
+contains two lines
+-- input2.txt --
+and this has just one

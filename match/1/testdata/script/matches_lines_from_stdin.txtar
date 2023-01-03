@@ -1,0 +1,13 @@
+stdin three_matching_lines.txt
+exec match MAGIC
+stdout -count=1 '^this line is MAGIC\n'
+stdout -count=1 '^MAGIC is also on this line\n'
+stdout -count=1 '^and MAGIC is here too\n'
+
+-- three_matching_lines.txt --
+this won't match
+this line is MAGIC
+
+MAGIC is also on this line
+but not this one
+and MAGIC is here too

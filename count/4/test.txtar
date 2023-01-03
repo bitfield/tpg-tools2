@@ -1,3 +1,4 @@
+exec go test
 stdin input.txt
 exec go run cmd/count/main.go
 stdout '3\n'

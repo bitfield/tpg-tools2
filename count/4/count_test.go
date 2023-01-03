@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func TestLines(t *testing.T) {
+func TestLinesCountsLinesInInput(t *testing.T) {
 	t.Parallel()
 	inputBuf := bytes.NewBufferString("1\n2\n3")
 	c, err := count.NewCounter(
@@ -22,7 +22,7 @@ func TestLines(t *testing.T) {
 	}
 }
 
-func TestWithInputFromArgs(t *testing.T) {
+func TestWithInputFromArgs_SetsInputToSuppliedFilename(t *testing.T) {
 	t.Parallel()
 	args := []string{"testdata/three_lines.txt"}
 	c, err := count.NewCounter(
@@ -38,7 +38,7 @@ func TestWithInputFromArgs(t *testing.T) {
 	}
 }
 
-func TestWithInputFromArgsEmpty(t *testing.T) {
+func TestWithInputFromArgs_IgnoresEmptyArgs(t *testing.T) {
 	t.Parallel()
 	inputBuf := bytes.NewBufferString("1\n2\n3")
 	c, err := count.NewCounter(

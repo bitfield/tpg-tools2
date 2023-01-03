@@ -1,0 +1,7 @@
+exec count three_lines.txt
+stdout '^3\n$'
+
+-- three_lines.txt --
+this input
+contains
+three lines
