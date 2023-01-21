@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"match"
+	"github.com/bitfield/match"
 )
 
 func main() {

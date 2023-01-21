@@ -2,7 +2,7 @@ package count_test
 
 import (
 	"bytes"
-	"count"
+	"github.com/bitfield/count"
 	"testing"
 )
 

@@ -3,10 +3,11 @@ package greet_test
 import (
 	"bytes"
 	"errors"
-	"greet"
 	"os"
 	"testing"
 	"testing/iotest"
+
+	"github.com/bitfield/greet"
 
 	"github.com/rogpeppe/go-internal/testscript"
 )

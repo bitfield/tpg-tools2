@@ -1,7 +1,7 @@
 package main
 
 import (
-	"greet"
+	"github.com/bitfield/greet"
 )
 
 func main() {

@@ -4,7 +4,7 @@ import (
 	"os"
 	"testing"
 
-	"match"
+	"github.com/bitfield/match"
 
 	"github.com/rogpeppe/go-internal/testscript"
 )

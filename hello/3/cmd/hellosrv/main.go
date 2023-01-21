@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"hello"
+	"github.com/bitfield/hello"
 )
 
 func main() {

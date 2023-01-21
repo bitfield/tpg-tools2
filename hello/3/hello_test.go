@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"testing"
 
-	"hello"
+	"github.com/bitfield/hello"
 )
 
 func TestPrintTo_PrintsHelloMessageToGivenWriter(t *testing.T) {

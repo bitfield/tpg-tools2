@@ -1,4 +1,4 @@
-module match
+module github.com/bitfield/match
 
 go 1.19
 

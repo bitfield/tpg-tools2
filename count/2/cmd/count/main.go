@@ -1,7 +1,7 @@
 package main
 
 import (
-	"count"
+	"github.com/bitfield/count"
 )
 
 func main() {

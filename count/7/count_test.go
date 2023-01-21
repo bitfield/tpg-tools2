@@ -12,7 +12,8 @@ import (
 
 func TestMain(m *testing.M) {
 	os.Exit(testscript.RunMain(m, map[string]func() int{
-		"count": count.Main,
+		"lines": count.MainLines,
+		"words": count.MainWords,
 	}))
 }
 
@@ -33,6 +34,22 @@ func TestLinesCountsLinesInInput(t *testing.T) {
 	}
 	want := 3
 	got := c.Lines()
+	if want != got {
+		t.Errorf("want %d, got %d", want, got)
+	}
+}
+
+func TestWordsCountsWordsInInput(t *testing.T) {
+	t.Parallel()
+	inputBuf := bytes.NewBufferString("1\n2 words\n3 this time")
+	c, err := count.NewCounter(
+		count.WithInput(inputBuf),
+	)
+	if err != nil {
+		t.Fatal(err)
+	}
+	want := 6
+	got := c.Words()
 	if want != got {
 		t.Errorf("want %d, got %d", want, got)
 	}

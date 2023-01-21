@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"hello"
+	"github.com/bitfield/hello"
 )
 
 func main() {

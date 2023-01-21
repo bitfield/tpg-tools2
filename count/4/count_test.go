@@ -2,8 +2,9 @@ package count_test
 
 import (
 	"bytes"
-	"count"
 	"testing"
+
+	"github.com/bitfield/count"
 )
 
 func TestLinesCountsLinesInInput(t *testing.T) {
