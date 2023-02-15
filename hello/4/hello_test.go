@@ -8,6 +8,7 @@ import (
 )
 
 func TestPrintsHelloMessageToWriter(t *testing.T) {
+	t.Parallel()
 	fakeTerminal := &bytes.Buffer{}
 	p := &hello.Printer{
 		Output: fakeTerminal,
