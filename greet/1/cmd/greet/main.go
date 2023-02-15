@@ -1,9 +1,11 @@
 package main
 
 import (
+	"os"
+
 	"github.com/bitfield/greet"
 )
 
 func main() {
-	greet.Main()
+	os.Exit(greet.Main())
 }
