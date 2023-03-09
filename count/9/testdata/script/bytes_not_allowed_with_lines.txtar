@@ -1,0 +1,2 @@
+! exec count -bytes -lines
+stderr 'not both'

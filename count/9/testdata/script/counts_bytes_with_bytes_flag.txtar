@@ -1,0 +1,6 @@
+exec count -bytes input.txt
+stdout '^57\n$'
+
+-- input.txt --
+this input contains 57 bytes
+including the final newline

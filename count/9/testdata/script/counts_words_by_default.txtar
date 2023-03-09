@@ -1,0 +1,7 @@
+exec count input.txt
+stdout '^5\n$'
+
+-- input.txt --
+this input
+contains
+five words
