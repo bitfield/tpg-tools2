@@ -3,12 +3,13 @@ package writer_test
 import (
 	"os"
 	"testing"
-	"writer"
+
+	"github.com/bitfield/writer"
 
 	"github.com/google/go-cmp/cmp"
 )
 
-func TestWriteToFile(t *testing.T) {
+func TestWriteToFile_WritesDataToFile(t *testing.T) {
 	t.Parallel()
 	path := t.TempDir() + "/write_test.txt"
 	want := []byte{1, 2, 3}
@@ -33,7 +34,7 @@ func TestWriteToFile(t *testing.T) {
 	}
 }
 
-func TestWriteToFileClobbers(t *testing.T) {
+func TestWriteToFile_ClobbersExistingFile(t *testing.T) {
 	t.Parallel()
 	path := t.TempDir() + "/clobber_test.txt"
 	err := os.WriteFile(path, []byte{4, 5, 6}, 0600)
@@ -54,7 +55,7 @@ func TestWriteToFileClobbers(t *testing.T) {
 	}
 }
 
-func TestPermsClosed(t *testing.T) {
+func TestWriteToFile_ChangesPermsOnExistingFile(t *testing.T) {
 	t.Parallel()
 	path := t.TempDir() + "/perms_test.txt"
 	// Pre-create empty file with open perms
