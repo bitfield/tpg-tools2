@@ -1,0 +1,3 @@
+exec go test -skip ZIP
+exec go run cmd/findgo/main.go testdata/tree
+stdout '^4\n$'

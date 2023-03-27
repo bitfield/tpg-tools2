@@ -1,6 +1,8 @@
 package writer
 
-import "os"
+import (
+	"os"
+)
 
 func WriteToFile(path string, data []byte) error {
 	err := os.WriteFile(path, data, 0600)

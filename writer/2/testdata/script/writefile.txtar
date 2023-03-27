@@ -1,0 +1,26 @@
+[!exec:mkfile] skip 'Need mkfile for this test'
+
+# With path and -size flag, create file with required size
+! exists zeroes.dat
+exec writefile -size 1000 zeroes.dat
+exec mkfile 1000 golden.dat
+cmp zeroes.dat golden.dat
+
+# With path only, create zero-length file
+! exists nothing.dat
+exec writefile nothing.dat
+exists nothing.dat
+exec mkfile 0 golden_zero.dat
+cmp nothing.dat golden_zero.dat
+
+# With -size but no path, show usage message
+! exec writefile -size 1000
+stderr 'Usage'
+
+# With -size but no accompanying value, show usage
+! exec writefile -size
+stderr 'Usage'
+
+# With no arguments, show usage message
+! exec writefile
+stderr 'Usage'
