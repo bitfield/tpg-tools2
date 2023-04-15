@@ -34,7 +34,7 @@ func TestWriteToFile_WritesDataToFile(t *testing.T) {
 		t.Fatal(err)
 	}
 	perm := stat.Mode().Perm()
-	if perm != 0600 {
+	if perm != 0o600 {
 		t.Errorf("want file mode 0600, got 0%o", perm)
 	}
 	got, err := os.ReadFile(path)
@@ -49,7 +49,7 @@ func TestWriteToFile_WritesDataToFile(t *testing.T) {
 func TestWriteToFile_ClobbersExistingFile(t *testing.T) {
 	t.Parallel()
 	path := t.TempDir() + "/clobber_test.txt"
-	err := os.WriteFile(path, []byte{4, 5, 6}, 0600)
+	err := os.WriteFile(path, []byte{4, 5, 6}, 0o600)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -71,7 +71,7 @@ func TestWriteToFile_ChangesPermsOnExistingFile(t *testing.T) {
 	t.Parallel()
 	path := t.TempDir() + "/perms_test.txt"
 	// Pre-create empty file with open perms
-	err := os.WriteFile(path, []byte{}, 0644)
+	err := os.WriteFile(path, []byte{}, 0o644)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -84,7 +84,7 @@ func TestWriteToFile_ChangesPermsOnExistingFile(t *testing.T) {
 		t.Fatal(err)
 	}
 	perm := stat.Mode().Perm()
-	if perm != 0600 {
+	if perm != 0o600 {
 		t.Errorf("want file mode 0600, got 0%o", perm)
 	}
 }
