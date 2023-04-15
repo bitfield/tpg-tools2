@@ -1,3 +1,3 @@
 exec go test -skip ZIP
 exec go run cmd/findgo/main.go testdata/tree
-stdout '^4\n$'
+stdout 'file.go\nsubfolder/subfolder.go\nsubfolder2/another.go\nsubfolder2/file.go\n'

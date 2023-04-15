@@ -8,5 +8,8 @@ import (
 )
 
 func main() {
-	fmt.Println(findgo.Files(os.Args[1]))
+	paths := findgo.Files(os.Args[1])
+	for _, p := range paths {
+		fmt.Println(p)
+	}
 }

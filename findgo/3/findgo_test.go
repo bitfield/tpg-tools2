@@ -4,13 +4,19 @@ import (
 	"testing"
 
 	"github.com/bitfield/findgo"
+	"github.com/google/go-cmp/cmp"
 )
 
-func TestFiles_CorrectlyCountsFilesInTree(t *testing.T) {
+func TestFiles_CorrectlyListsFilesInTree(t *testing.T) {
 	t.Parallel()
-	want := 4
-	got := findgo.Files("testdata")
-	if want != got {
-		t.Errorf("want %d, got %d", want, got)
+	want := []string{
+		"file.go",
+		"subfolder/subfolder.go",
+		"subfolder2/another.go",
+		"subfolder2/file.go",
+	}
+	got := findgo.Files("testdata/tree")
+	if !cmp.Equal(want, got) {
+		t.Error(cmp.Diff(want, got))
 	}
 }

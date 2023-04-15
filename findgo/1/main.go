@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	fmt.Println(countGoFiles("testdata", 0))
+	fmt.Println(countGoFiles("testdata/tree", 0))
 }
 
 func countGoFiles(folder string, count int) int {

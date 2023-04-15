@@ -7,19 +7,25 @@ import (
 	"testing/fstest"
 
 	"github.com/bitfield/findgo"
+	"github.com/google/go-cmp/cmp"
 )
 
-func TestFiles_CorrectlyCountsFilesInTree(t *testing.T) {
+func TestFiles_CorrectlyListsFilesInTree(t *testing.T) {
 	t.Parallel()
 	fsys := os.DirFS("testdata/tree")
-	want := 4
+	want := []string{
+		"file.go",
+		"subfolder/subfolder.go",
+		"subfolder2/another.go",
+		"subfolder2/file.go",
+	}
 	got := findgo.Files(fsys)
-	if want != got {
-		t.Errorf("want %d, got %d", want, got)
+	if !cmp.Equal(want, got) {
+		t.Error(cmp.Diff(want, got))
 	}
 }
 
-func TestFiles_CorrectlyCountsFilesInMapFS(t *testing.T) {
+func TestFiles_CorrectlyListsFilesInMapFS(t *testing.T) {
 	t.Parallel()
 	fsys := fstest.MapFS{
 		"file.go":                {},
@@ -27,23 +33,33 @@ func TestFiles_CorrectlyCountsFilesInMapFS(t *testing.T) {
 		"subfolder2/another.go":  {},
 		"subfolder2/file.go":     {},
 	}
-	want := 4
+	want := []string{
+		"file.go",
+		"subfolder/subfolder.go",
+		"subfolder2/another.go",
+		"subfolder2/file.go",
+	}
 	got := findgo.Files(fsys)
-	if want != got {
-		t.Errorf("want %d, got %d", want, got)
+	if !cmp.Equal(want, got) {
+		t.Error(cmp.Diff(want, got))
 	}
 }
 
-func TestFiles_CorrectlyCountsFilesInZIPArchive(t *testing.T) {
+func TestFiles_CorrectlyListsFilesInZIPArchive(t *testing.T) {
 	t.Parallel()
 	fsys, err := zip.OpenReader("testdata/files.zip")
 	if err != nil {
 		t.Fatal(err)
 	}
-	want := 4
+	want := []string{
+		"tree/file.go",
+		"tree/subfolder/subfolder.go",
+		"tree/subfolder2/another.go",
+		"tree/subfolder2/file.go",
+	}
 	got := findgo.Files(fsys)
-	if want != got {
-		t.Errorf("want %d, got %d", want, got)
+	if !cmp.Equal(want, got) {
+		t.Error(cmp.Diff(want, got))
 	}
 }
 
@@ -51,7 +67,7 @@ func BenchmarkFilesOnDisk(b *testing.B) {
 	fsys := os.DirFS("testdata/tree")
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
-		findgo.Files(fsys)
+		_ = findgo.Files(fsys)
 	}
 }
 
@@ -64,6 +80,6 @@ func BenchmarkFilesInMemory(b *testing.B) {
 	}
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
-		findgo.Files(fsys)
+		_ = findgo.Files(fsys)
 	}
 }

@@ -5,12 +5,12 @@ import (
 	"path/filepath"
 )
 
-func Files(fsys fs.FS) (count int) {
+func Files(fsys fs.FS) (paths []string) {
 	fs.WalkDir(fsys, ".", func(p string, d fs.DirEntry, err error) error {
 		if filepath.Ext(p) == ".go" {
-			count++
+			paths = append(paths, p)
 		}
 		return nil
 	})
-	return count
+	return paths
 }
