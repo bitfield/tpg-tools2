@@ -4,9 +4,10 @@ import (
 	"bytes"
 	"io"
 	"os"
-	"shell"
 	"strings"
 	"testing"
+
+	"shell"
 
 	"github.com/google/go-cmp/cmp"
 )
@@ -34,15 +35,12 @@ func TestCmdFromString(t *testing.T) {
 
 func TestNewSession(t *testing.T) {
 	t.Parallel()
-	stdin := os.Stdin
-	stdout := os.Stdout
-	stderr := os.Stderr
 	want := shell.Session{
-		Stdin:  stdin,
-		Stdout: stdout,
-		Stderr: stderr,
+		Stdin:  os.Stdin,
+		Stdout: os.Stdout,
+		Stderr: os.Stderr,
 	}
-	got := *shell.NewSession(stdin, stdout, stderr)
+	got := *shell.NewSession(os.Stdin, os.Stdout, os.Stderr)
 	if want != got {
 		t.Errorf("want %#v, got %#v", want, got)
 	}
@@ -50,13 +48,13 @@ func TestNewSession(t *testing.T) {
 
 func TestRun(t *testing.T) {
 	t.Parallel()
-	stdin := strings.NewReader("echo hello\n\n")
-	stdout := &bytes.Buffer{}
-	session := shell.NewSession(stdin, stdout, io.Discard)
+	in := strings.NewReader("echo hello\n\n")
+	out := new(bytes.Buffer)
+	session := shell.NewSession(in, out, io.Discard)
 	session.DryRun = true
 	session.Run()
 	want := "> echo hello\n> > \nBe seeing you!\n"
-	got := stdout.String()
+	got := out.String()
 	if !cmp.Equal(want, got) {
 		t.Error(cmp.Diff(want, got))
 	}

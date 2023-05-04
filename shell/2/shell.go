@@ -16,11 +16,11 @@ type Session struct {
 	DryRun         bool
 }
 
-func NewSession(stdin io.Reader, stdout, stderr io.Writer) *Session {
+func NewSession(in io.Reader, out, errs io.Writer) *Session {
 	return &Session{
-		Stdin:  stdin,
-		Stdout: stdout,
-		Stderr: stderr,
+		Stdin:  in,
+		Stdout: out,
+		Stderr: errs,
 		DryRun: false,
 	}
 }
@@ -58,7 +58,8 @@ func CmdFromString(cmdLine string) (*exec.Cmd, error) {
 	return exec.Command(args[0], args[1:]...), nil
 }
 
-func RunCLI() {
+func Main() int {
 	session := NewSession(os.Stdin, os.Stdout, os.Stderr)
 	session.Run()
+	return 0
 }

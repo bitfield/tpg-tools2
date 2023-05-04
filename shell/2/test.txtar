@@ -1,0 +1,7 @@
+exec go test
+stdin input.txt
+exec go run cmd/shell/main.go
+stdout 'shell.go'
+
+-- input.txt --
+ls

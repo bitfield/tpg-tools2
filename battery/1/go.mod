@@ -1,4 +1,4 @@
-module github.com/bitfield/writer
+module battery
 
 go 1.20
 

@@ -10,7 +10,7 @@ import (
 	"github.com/google/go-cmp/cmp"
 )
 
-func TestFiles_CorrectlyListsFilesInTree(t *testing.T) {
+func TestFilesCorrectlyListsFilesInTree(t *testing.T) {
 	t.Parallel()
 	fsys := os.DirFS("testdata/tree")
 	want := []string{
@@ -25,7 +25,7 @@ func TestFiles_CorrectlyListsFilesInTree(t *testing.T) {
 	}
 }
 
-func TestFiles_CorrectlyListsFilesInMapFS(t *testing.T) {
+func TestFilesCorrectlyListsFilesInMapFS(t *testing.T) {
 	t.Parallel()
 	fsys := fstest.MapFS{
 		"file.go":                {},
@@ -45,7 +45,7 @@ func TestFiles_CorrectlyListsFilesInMapFS(t *testing.T) {
 	}
 }
 
-func TestFiles_CorrectlyListsFilesInZIPArchive(t *testing.T) {
+func TestFilesCorrectlyListsFilesInZIPArchive(t *testing.T) {
 	t.Parallel()
 	fsys, err := zip.OpenReader("testdata/files.zip")
 	if err != nil {

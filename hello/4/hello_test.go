@@ -9,13 +9,13 @@ import (
 
 func TestPrintsHelloMessageToWriter(t *testing.T) {
 	t.Parallel()
-	fakeTerminal := &bytes.Buffer{}
+	buf := new(bytes.Buffer)
 	p := &hello.Printer{
-		Output: fakeTerminal,
+		Output: buf,
 	}
 	p.Print()
 	want := "Hello, world\n"
-	got := fakeTerminal.String()
+	got := buf.String()
 	if want != got {
 		t.Errorf("want %q, got %q", want, got)
 	}

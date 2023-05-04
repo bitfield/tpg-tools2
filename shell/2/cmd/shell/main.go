@@ -1,9 +1,11 @@
 package main
 
 import (
+	"os"
+
 	"shell"
 )
 
 func main() {
-	shell.RunCLI()
+	os.Exit(shell.Main())
 }

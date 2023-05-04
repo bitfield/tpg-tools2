@@ -1,4 +1,4 @@
-module github.com/bitfield/writer
+module shell
 
 go 1.20
 

@@ -7,7 +7,7 @@ import (
 	"github.com/google/go-cmp/cmp"
 )
 
-func TestFiles_CorrectlyListsFilesInTree(t *testing.T) {
+func TestFilesCorrectlyListsFilesInTree(t *testing.T) {
 	t.Parallel()
 	want := []string{
 		"file.go",
