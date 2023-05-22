@@ -7,7 +7,7 @@ import (
 	"github.com/bitfield/hello"
 )
 
-func TestPrintsHelloMessageToWriter(t *testing.T) {
+func TestPrintPrintsHelloMessageToOutput(t *testing.T) {
 	t.Parallel()
 	buf := new(bytes.Buffer)
 	p := &hello.Printer{

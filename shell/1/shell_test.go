@@ -7,7 +7,7 @@ import (
 	"github.com/google/go-cmp/cmp"
 )
 
-func TestCmdFromStringErrorsOnEmptyInput(t *testing.T) {
+func TestCmdFromString_ErrorsOnEmptyInput(t *testing.T) {
 	t.Parallel()
 	_, err := shell.CmdFromString("")
 	if err == nil {
@@ -15,7 +15,7 @@ func TestCmdFromStringErrorsOnEmptyInput(t *testing.T) {
 	}
 }
 
-func TestCmdFromString(t *testing.T) {
+func TestCmdFromString_CreatesExpectedCmd(t *testing.T) {
 	t.Parallel()
 	cmd, err := shell.CmdFromString("/bin/ls -l main.go")
 	if err != nil {

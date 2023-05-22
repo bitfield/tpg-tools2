@@ -51,8 +51,9 @@ func TestRun_ProducesExpectedOutput(t *testing.T) {
 	in := strings.NewReader("echo hello\n\n")
 	out := new(bytes.Buffer)
 	session := shell.NewSession(in, out, io.Discard)
+	session.DryRun = true
 	session.Run()
-	want := "> hello\n> > \nBe seeing you!\n"
+	want := "> echo hello\n> > \nBe seeing you!\n"
 	got := out.String()
 	if !cmp.Equal(want, got) {
 		t.Error(cmp.Diff(want, got))

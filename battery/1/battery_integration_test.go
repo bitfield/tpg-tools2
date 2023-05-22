@@ -7,7 +7,7 @@ import (
 	"testing"
 )
 
-func TestGetPmsetOutput(t *testing.T) {
+func TestGetPmsetOutput_CapturesCmdOutput(t *testing.T) {
 	t.Parallel()
 	text, err := battery.GetPmsetOutput()
 	if err != nil {

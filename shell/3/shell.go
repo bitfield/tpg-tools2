@@ -13,6 +13,7 @@ import (
 type Session struct {
 	Stdin          io.Reader
 	Stdout, Stderr io.Writer
+	DryRun         bool
 }
 
 func NewSession(in io.Reader, out, errs io.Writer) *Session {
@@ -20,6 +21,7 @@ func NewSession(in io.Reader, out, errs io.Writer) *Session {
 		Stdin:  in,
 		Stdout: out,
 		Stderr: errs,
+		DryRun: false,
 	}
 }
 
@@ -34,6 +36,10 @@ func (s *Session) Run() {
 		}
 		cmd, err := CmdFromString(line)
 		if err != nil {
+			continue
+		}
+		if s.DryRun {
+			fmt.Fprintf(s.Stdout, "%s", line)
 			continue
 		}
 		output, err := cmd.CombinedOutput()
