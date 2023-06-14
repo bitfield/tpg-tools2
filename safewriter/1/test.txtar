@@ -1,0 +1,8 @@
+exec go run main.go
+exists output.dat
+exec od -c output.dat
+cmp stdout output.golden
+
+-- output.golden --
+0000000  001 002 003 001 002 003 001 002 003 001 002 003                
+0000014
