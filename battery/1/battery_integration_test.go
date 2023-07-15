@@ -3,8 +3,9 @@
 package battery_test
 
 import (
-	"battery"
 	"testing"
+
+	"github.com/bitfield/battery"
 )
 
 func TestGetPmsetOutput_CapturesCmdOutput(t *testing.T) {

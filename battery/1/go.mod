@@ -1,4 +1,4 @@
-module battery
+module github.com/bitfield/battery
 
 go 1.20
 

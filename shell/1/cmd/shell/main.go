@@ -4,7 +4,8 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-	"shell"
+
+	"github.com/bitfield/shell"
 )
 
 func main() {

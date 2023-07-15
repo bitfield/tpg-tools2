@@ -1,4 +1,4 @@
-module shell
+module github.com/bitfield/shell
 
 go 1.20
 

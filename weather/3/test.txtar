@@ -1,0 +1,4 @@
+! exec go run ./cmd/weather/main.go
+stderr 'Please set the environment variable OPENWEATHERMAP_API_KEY'
+
+exec go test

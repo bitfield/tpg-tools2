@@ -1,9 +1,10 @@
 package main
 
 import (
-	"battery"
 	"fmt"
 	"os"
+
+	"github.com/bitfield/battery"
 )
 
 func main() {

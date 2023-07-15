@@ -1,6 +1,6 @@
 exec go test
 stdin input.txt
-exec go run cmd/count/main.go input.txt
+exec go run ./cmd/count/main.go input.txt
 stdout '3\n'
 
 -- input.txt --

@@ -1,9 +1,10 @@
 package battery_test
 
 import (
-	"battery"
 	"os"
 	"testing"
+
+	"github.com/bitfield/battery"
 
 	"github.com/google/go-cmp/cmp"
 )

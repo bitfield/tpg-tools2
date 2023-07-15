@@ -1,0 +1,2 @@
+exec go run main.go
+stdout 'Invalid API key'

@@ -1,8 +1,9 @@
 package shell_test
 
 import (
-	"shell"
 	"testing"
+
+	"github.com/bitfield/shell"
 
 	"github.com/google/go-cmp/cmp"
 )

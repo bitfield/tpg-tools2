@@ -1,0 +1,2 @@
+! exec go run main.go
+stderr 'Please set the environment variable OPENWEATHERMAP_API_KEY'

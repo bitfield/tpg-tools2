@@ -1,2 +1,2 @@
-exec go run cmd/hello/main.go
+exec go run ./cmd/hello/main.go
 stdout 'Hello, world'

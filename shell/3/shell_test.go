@@ -7,7 +7,7 @@ import (
 	"strings"
 	"testing"
 
-	"shell"
+	"github.com/bitfield/shell"
 
 	"github.com/google/go-cmp/cmp"
 )

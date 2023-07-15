@@ -1,11 +1,11 @@
 exec go test
 
 stdin input.txt
-exec go run cmd/lines/main.go input.txt
+exec go run ./cmd/lines/main.go input.txt
 stdout '3\n'
 
 stdin input.txt
-exec go run cmd/words/main.go input.txt
+exec go run ./cmd/words/main.go input.txt
 stdout '5\n'
 
 -- input.txt --

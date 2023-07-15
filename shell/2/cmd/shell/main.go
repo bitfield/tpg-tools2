@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"shell"
+	"github.com/bitfield/shell"
 )
 
 func main() {
