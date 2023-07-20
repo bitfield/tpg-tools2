@@ -1,3 +1,3 @@
 exec go run main.go
 [exec:hexdump] exec hexdump output.dat
-[exec:hexdump] stdout '01 02 03 01 02 03 01 02 03 01 02 03x'
+[exec:hexdump] stdout '01 02 03 01 02 03 01 02 03 01 02 03'
