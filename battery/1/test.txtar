@@ -1,3 +1,4 @@
+[!darwin] skip
 exec go test -tags=integration
 exec go run ./cmd/battery/main.go
 stdout 'Battery \d+% charged'
