@@ -34,7 +34,7 @@ func (sw *safeWriter) Write(data []byte) {
 }
 
 func write(w io.Writer) error {
-	metadata := []byte{1, 2, 3}
+	metadata := []byte("hello\n")
 	sw := safeWriter{w: w}
 	sw.Write(metadata)
 	sw.Write(metadata)

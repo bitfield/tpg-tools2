@@ -1,3 +1,8 @@
 exec go run main.go
-[exec:hexdump] exec hexdump output.dat
-[exec:hexdump] stdout '01 02 03 01 02 03 01 02 03 01 02 03'
+cmp output.dat golden.txt
+
+-- golden.txt --
+hello
+hello
+hello
+hello
