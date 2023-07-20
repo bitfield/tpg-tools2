@@ -15,5 +15,6 @@ jobs:
           cache: false
       - uses: actions/checkout@v3
       - run: |
+          go install github.com/rogpeppe/go-internal/cmd/testscript@latesti
           go install github.com/bitfield/txtar-c@latest
           ./run_all_testscripts.sh
