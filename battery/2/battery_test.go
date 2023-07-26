@@ -9,7 +9,7 @@ import (
 	"github.com/google/go-cmp/cmp"
 )
 
-func TestToJSON(t *testing.T) {
+func TestToJSON_GivesExpectedJSON(t *testing.T) {
 	t.Parallel()
 	batt := battery.Battery{
 		Name:             "InternalBattery-0",

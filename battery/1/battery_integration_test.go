@@ -14,7 +14,7 @@ func TestGetPmsetOutput_CapturesCmdOutput(t *testing.T) {
 	t.Parallel()
 	data, err := exec.Command("/usr/bin/pmset", "-g", "ps").CombinedOutput()
 	if err != nil {
-		t.Skipf("'pmset' command not installed or not working: %v", err)
+		t.Skipf("unable to run 'pmset' command: %v", err)
 	}
 	if !bytes.Contains(data, []byte("InternalBattery")) {
 		t.Skip("no battery fitted")

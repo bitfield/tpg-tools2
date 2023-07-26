@@ -8,7 +8,7 @@ import (
 	"github.com/google/go-cmp/cmp"
 )
 
-func TestStoreFile(t *testing.T) {
+func TestStorePersistsDataToFile(t *testing.T) {
 	t.Parallel()
 	path := t.TempDir() + "/store.bin"
 	output := store.Open(path)
@@ -30,7 +30,7 @@ func TestStoreFile(t *testing.T) {
 	}
 }
 
-func TestClose(t *testing.T) {
+func TestCloseReturnsErrorOnClosedStore(t *testing.T) {
 	t.Parallel()
 	path := t.TempDir() + "/store.bin"
 	output := store.Open(path)
@@ -48,7 +48,7 @@ func TestClose(t *testing.T) {
 	}
 }
 
-func TestCloseNilStream(t *testing.T) {
+func TestCloseReturnsNoErrorOnEmptyStore(t *testing.T) {
 	t.Parallel()
 	path := t.TempDir() + "/store.bin"
 	output := store.Open(path)

@@ -12,7 +12,7 @@ import (
 	"github.com/google/go-cmp/cmp"
 )
 
-func TestParseResponse(t *testing.T) {
+func TestParseResponse_CorrectlyParsesJSONData(t *testing.T) {
 	t.Parallel()
 	data, err := os.ReadFile("testdata/weather.json")
 	if err != nil {
@@ -31,7 +31,7 @@ func TestParseResponse(t *testing.T) {
 	}
 }
 
-func TestParseResponseEmpty(t *testing.T) {
+func TestParseResponse_ReturnsErrorGivenEmptyData(t *testing.T) {
 	t.Parallel()
 	_, err := weather.ParseResponse([]byte{})
 	if err == nil {
@@ -39,7 +39,7 @@ func TestParseResponseEmpty(t *testing.T) {
 	}
 }
 
-func TestParseResponseInvalid(t *testing.T) {
+func TestParseResponse_ReturnsErrorGivenInvalidJSON(t *testing.T) {
 	t.Parallel()
 	data, err := os.ReadFile("testdata/weather_invalid.json")
 	if err != nil {
@@ -51,7 +51,7 @@ func TestParseResponseInvalid(t *testing.T) {
 	}
 }
 
-func TestFormatURL(t *testing.T) {
+func TestFormatURL_ReturnsCorrectURLForGivenInputs(t *testing.T) {
 	t.Parallel()
 	c := weather.NewClient("dummyAPIKey")
 	location := "Paris,FR"
@@ -62,7 +62,7 @@ func TestFormatURL(t *testing.T) {
 	}
 }
 
-func TestGetWeather(t *testing.T) {
+func TestGetWeather_ReturnsExpectedConditions(t *testing.T) {
 	t.Parallel()
 	ts := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		f, err := os.Open("testdata/weather.json")
@@ -89,7 +89,7 @@ func TestGetWeather(t *testing.T) {
 	}
 }
 
-func TestCelsius(t *testing.T) {
+func TestCelsiusCorrectlyConvertsFahrenheitToCelsius(t *testing.T) {
 	t.Parallel()
 	input := weather.Temperature(274.15)
 	want := 1.0

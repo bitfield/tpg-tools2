@@ -9,7 +9,7 @@ import (
 	"github.com/google/go-cmp/cmp"
 )
 
-func TestConfigFromYAML(t *testing.T) {
+func TestConfigFromYAML_CorrectlyParsesYAMLData(t *testing.T) {
 	t.Parallel()
 	want := prom.Config{
 		Global: prom.GlobalConfig{

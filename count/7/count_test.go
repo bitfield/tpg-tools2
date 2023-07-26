@@ -17,7 +17,8 @@ func TestMain(m *testing.M) {
 	}))
 }
 
-func TestScript(t *testing.T) {
+func Test(t *testing.T) {
+	t.Parallel()
 	testscript.Run(t, testscript.Params{
 		Dir: "testdata/script",
 	})
@@ -55,7 +56,7 @@ func TestWordsCountsWordsInInput(t *testing.T) {
 	}
 }
 
-func TestWithInputFromArgs_SetsInputToSuppliedFilename(t *testing.T) {
+func TestWithInputFromArgs_SetsInputToGivenPath(t *testing.T) {
 	t.Parallel()
 	args := []string{"testdata/three_lines.txt"}
 	c, err := count.NewCounter(

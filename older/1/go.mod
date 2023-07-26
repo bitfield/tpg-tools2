@@ -1,4 +1,4 @@
-module github.com/bitfield/pipeline
+module github.com/bitfield/older
 
 go 1.20
 
