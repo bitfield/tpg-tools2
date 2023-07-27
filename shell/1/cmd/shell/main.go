@@ -9,14 +9,10 @@ import (
 )
 
 func main() {
-	input := bufio.NewReader(os.Stdin)
-	for {
-		fmt.Print("> ")
-		line, err := input.ReadString('\n')
-		if err != nil {
-			fmt.Println("\nBe seeing you!")
-			break
-		}
+	fmt.Print("> ")
+	input := bufio.NewScanner(os.Stdin)
+	for input.Scan() {
+		line := input.Text()
 		cmd, err := shell.CmdFromString(line)
 		if err != nil {
 			continue
@@ -26,5 +22,7 @@ func main() {
 			fmt.Println("error:", err)
 		}
 		fmt.Printf("%s", out)
+		fmt.Print("\n> ")
 	}
+	fmt.Println("\nBe seeing you!")
 }

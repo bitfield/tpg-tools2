@@ -26,28 +26,26 @@ func NewSession(in io.Reader, out, errs io.Writer) *Session {
 }
 
 func (s *Session) Run() {
-	input := bufio.NewReader(s.Stdin)
-	for {
-		fmt.Fprintf(s.Stdout, "> ")
-		line, err := input.ReadString('\n')
-		if err != nil {
-			fmt.Fprintln(s.Stdout, "\nBe seeing you!")
-			break
-		}
+	fmt.Fprintf(s.Stdout, "> ")
+	input := bufio.NewScanner(s.Stdin)
+	for input.Scan() {
+		line := input.Text()
 		cmd, err := CmdFromString(line)
 		if err != nil {
+			fmt.Fprintf(s.Stdout, "> ")
 			continue
 		}
 		if s.DryRun {
-			fmt.Fprintf(s.Stdout, "%s", line)
+			fmt.Fprintf(s.Stdout, "%s\n> ", line)
 			continue
 		}
 		output, err := cmd.CombinedOutput()
 		if err != nil {
 			fmt.Fprintln(s.Stderr, "error:", err)
 		}
-		fmt.Fprintf(s.Stdout, "%s", output)
+		fmt.Fprintf(s.Stdout, "%s> ", output)
 	}
+	fmt.Fprintln(s.Stdout, "\nBe seeing you!")
 }
 
 func CmdFromString(cmdLine string) (*exec.Cmd, error) {
