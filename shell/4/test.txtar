@@ -1,0 +1,8 @@
+exec go test
+stdin input.txt
+exec go run ./cmd/shell/main.go
+stdout 'hello'
+grep 'Be seeing you!' transcript.txt
+
+-- input.txt --
+echo hello

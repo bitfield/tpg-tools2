@@ -1,0 +1,5 @@
+exec go test
+! exec go run ./cmd/howlong
+stderr 'Usage'
+[!windows] exec go run ./cmd/howlong sleep 0.1
+stdout 'time:'
