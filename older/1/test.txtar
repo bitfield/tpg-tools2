@@ -1,1 +1,5 @@
 exec go test
+! exec go run ./cmd/older
+stderr 'Usage'
+exec go run ./cmd/older 1ms
+stdout 'older.go'
