@@ -1,0 +1,7 @@
+stdin input.txt
+exec shell
+stdout 'hello'
+grep 'Be seeing you!' transcript.txt
+
+-- input.txt --
+echo hello

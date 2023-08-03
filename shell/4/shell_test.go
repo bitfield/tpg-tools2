@@ -8,9 +8,23 @@ import (
 	"testing"
 
 	"github.com/bitfield/shell"
+	"github.com/rogpeppe/go-internal/testscript"
 
 	"github.com/google/go-cmp/cmp"
 )
+
+func TestMain(m *testing.M) {
+	os.Exit(testscript.RunMain(m, map[string]func() int{
+		"shell": shell.Main,
+	}))
+}
+
+func Test(t *testing.T) {
+	t.Parallel()
+	testscript.Run(t, testscript.Params{
+		Dir: "testdata/script",
+	})
+}
 
 func TestCmdFromString_ErrorsOnEmptyInput(t *testing.T) {
 	t.Parallel()
