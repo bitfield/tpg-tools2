@@ -9,8 +9,6 @@ import (
 )
 
 func main() {
-	script.FindFiles(".").
-		MatchRegexp(regexp.MustCompile(".go$")).Stdout()
 	lines, err := script.FindFiles(".").
 		MatchRegexp(regexp.MustCompile(".go$")).
 		Concat().
