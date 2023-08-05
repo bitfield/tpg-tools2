@@ -1,0 +1,4 @@
+! exec kv set foo bar
+stderr 'EOF'
+
+-- kv.store --

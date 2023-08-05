@@ -1,0 +1,7 @@
+exec kv get B
+! stdout '1'
+stdout '2\n'
+! stdout '3'
+
+-- kv.store --
+{"A":"1","B":"2","C":"3"}

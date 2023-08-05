@@ -1,0 +1,12 @@
+cd input
+exec go run ../main.go
+stdout 'You''ve written 5 lines of Go in this project. Nice work!'
+
+-- input/main.go --
+package main
+
+import "fmt"
+
+func main() {
+  fmt.Println("This program has 5 non-blank lines")
+}

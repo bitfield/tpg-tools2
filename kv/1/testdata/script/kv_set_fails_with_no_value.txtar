@@ -1,0 +1,2 @@
+! exec kv set foo
+stderr 'Usage: kv'

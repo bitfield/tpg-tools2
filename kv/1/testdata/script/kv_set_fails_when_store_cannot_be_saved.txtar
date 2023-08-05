@@ -1,0 +1,6 @@
+chmod 400 kv.store
+! exec kv set foo bar
+stderr 'kv.store: permission denied'
+
+-- kv.store --
+{"A":"1"}

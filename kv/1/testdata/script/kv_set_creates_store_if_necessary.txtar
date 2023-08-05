@@ -1,0 +1,2 @@
+exec kv set foo bar
+exists kv.store
