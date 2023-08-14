@@ -21,7 +21,7 @@ func TestScript(t *testing.T) {
 	})
 }
 
-func TestWriteToFile_WritesDataToFile(t *testing.T) {
+func TestWriteToFile_WritesGivenDataToFile(t *testing.T) {
 	t.Parallel()
 	path := t.TempDir() + "/write_test.txt"
 	want := []byte{1, 2, 3}
@@ -43,6 +43,15 @@ func TestWriteToFile_WritesDataToFile(t *testing.T) {
 	}
 	if !cmp.Equal(want, got) {
 		t.Fatal(cmp.Diff(want, got))
+	}
+}
+
+func TestWriteToFile_ReturnsErrorForUnwritableFile(t *testing.T) {
+	t.Parallel()
+	path := "bogusdir/write_test.txt"
+	err := writer.WriteToFile(path, []byte{})
+	if err == nil {
+		t.Fatal("want error when file not writable")
 	}
 }
 

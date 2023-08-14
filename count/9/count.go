@@ -55,21 +55,21 @@ func WithOutput(output io.Writer) option {
 	}
 }
 
-func NewCounter(opts ...option) (counter, error) {
-	c := counter{
+func NewCounter(opts ...option) (*counter, error) {
+	c := &counter{
 		input:  os.Stdin,
 		output: os.Stdout,
 	}
 	for _, opt := range opts {
-		err := opt(&c)
+		err := opt(c)
 		if err != nil {
-			return counter{}, err
+			return nil, err
 		}
 	}
 	return c, nil
 }
 
-func (c counter) Lines() int {
+func (c *counter) Lines() int {
 	lines := 0
 	input := bufio.NewScanner(c.input)
 	for input.Scan() {
@@ -81,7 +81,7 @@ func (c counter) Lines() int {
 	return lines
 }
 
-func (c counter) Words() int {
+func (c *counter) Words() int {
 	words := 0
 	input := bufio.NewScanner(c.input)
 	input.Split(bufio.ScanWords)
@@ -94,7 +94,7 @@ func (c counter) Words() int {
 	return words
 }
 
-func (c counter) Bytes() int {
+func (c *counter) Bytes() int {
 	bytes := 0
 	input := bufio.NewScanner(c.input)
 	input.Split(bufio.ScanBytes)
@@ -111,7 +111,7 @@ func Main() int {
 	lineMode := flag.Bool("lines", false, "Count lines, not words")
 	byteMode := flag.Bool("bytes", false, "Count bytes, not words")
 	flag.Usage = func() {
-		fmt.Printf("usage: %s [-lines | -bytes] [file ...]\n", os.Args[0])
+		fmt.Printf("Usage: %s [-lines | -bytes] [files...]\n", os.Args[0])
 		fmt.Println("Counts words (or lines or bytes) in named files or standard input.\nFlags:")
 		flag.PrintDefaults()
 	}

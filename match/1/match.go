@@ -47,21 +47,21 @@ func WithOutput(output io.Writer) option {
 	}
 }
 
-func NewMatcher(opts ...option) (matcher, error) {
-	m := matcher{
+func NewMatcher(opts ...option) (*matcher, error) {
+	m := &matcher{
 		input:  os.Stdin,
 		output: os.Stdout,
 	}
 	for _, opt := range opts {
-		err := opt(&m)
+		err := opt(m)
 		if err != nil {
-			return matcher{}, err
+			return nil, err
 		}
 	}
 	return m, nil
 }
 
-func (m matcher) PrintMatchingLines() {
+func (m *matcher) PrintMatchingLines() {
 	input := bufio.NewScanner(m.input)
 	for input.Scan() {
 		if strings.Contains(input.Text(), m.text) {

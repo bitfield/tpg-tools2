@@ -15,12 +15,12 @@ cmp nothing.dat golden_zero.dat
 
 # With -size but no path, show usage message
 ! exec writefile -size 1000
-stderr 'Usage'
+stderr 'Usage: writefile'
 
-# With -size but no accompanying value, show usage
+# With -size but no accompanying value, show error
 ! exec writefile -size
-stderr 'Usage'
+stderr 'flag needs an argument: -size'
 
 # With no arguments, show usage message
 ! exec writefile
-stderr 'Usage'
+stderr 'Usage: writefile'
