@@ -6,7 +6,6 @@ import (
 	"testing"
 
 	"github.com/bitfield/count"
-
 	"github.com/rogpeppe/go-internal/testscript"
 )
 

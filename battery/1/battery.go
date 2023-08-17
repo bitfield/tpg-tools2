@@ -38,5 +38,7 @@ func ParsePmsetOutput(text string) (Status, error) {
 	if err != nil {
 		return Status{}, fmt.Errorf("failed to parse charge percentage: %q", matches[1])
 	}
-	return Status{ChargePercent: charge}, nil
+	return Status{
+		ChargePercent: charge,
+	}, nil
 }
