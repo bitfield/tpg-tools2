@@ -1,2 +1,0 @@
-! exec kv get foo
-stderr 'open kv.store: no such file or directory'

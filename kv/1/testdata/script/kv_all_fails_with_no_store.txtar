@@ -1,2 +1,0 @@
-! exec kv all
-stderr 'open kv.store: no such file or directory'

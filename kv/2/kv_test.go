@@ -5,7 +5,22 @@ import (
 	"testing"
 
 	"github.com/bitfield/kv"
+	"github.com/google/go-cmp/cmp"
+	"github.com/rogpeppe/go-internal/testscript"
 )
+
+func TestMain(m *testing.M) {
+	os.Exit(testscript.RunMain(m, map[string]func() int{
+		"kv": kv.Main,
+	}))
+}
+
+func Test(t *testing.T) {
+	t.Parallel()
+	testscript.Run(t, testscript.Params{
+		Dir: "testdata/script",
+	})
+}
 
 func TestSetUpdatesExistingKeyToNewValue(t *testing.T) {
 	t.Parallel()
@@ -113,5 +128,25 @@ func TestOpenStore_ReturnsErrorOnInvalidData(t *testing.T) {
 	_, err := kv.OpenStore("testdata/invalid.store")
 	if err == nil {
 		t.Fatal("no error")
+	}
+}
+
+func TestAllReturnsExpectedMap(t *testing.T) {
+	t.Parallel()
+	s, err := kv.OpenStore("testdata/golden.store")
+	if err != nil {
+		t.Fatal(err)
+	}
+	s.Set("A", "1")
+	s.Set("B", "2")
+	s.Set("C", "3")
+	want := map[string]string{
+		"A": "1",
+		"B": "2",
+		"C": "3",
+	}
+	got := s.All()
+	if !cmp.Equal(want, got) {
+		t.Error(cmp.Diff(want, got))
 	}
 }
