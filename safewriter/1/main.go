@@ -1,20 +1,22 @@
 package main
 
 import (
+	"fmt"
 	"io"
-	"log"
 	"os"
 )
 
 func main() {
 	f, err := os.Create("output.dat")
 	if err != nil {
-		log.Fatal(err)
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
 	}
 	defer f.Close()
 	err = write(f)
 	if err != nil {
-		log.Fatal(err)
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
 	}
 }
 

@@ -88,8 +88,8 @@ func Main() int {
 	case "set":
 		return MainSet()
 	}
-	fmt.Println(Usage)
-	return 0
+	fmt.Fprintln(os.Stderr, Usage)
+	return 1
 }
 
 func MainAll() int {

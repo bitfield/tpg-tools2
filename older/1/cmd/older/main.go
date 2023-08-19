@@ -17,8 +17,8 @@ Example: older 24h
 
 func main() {
 	if len(os.Args) < 2 {
-		fmt.Fprintln(os.Stderr, Usage)
-		os.Exit(1)
+		fmt.Println(Usage)
+		os.Exit(0)
 	}
 	age, err := time.ParseDuration(os.Args[1])
 	if err != nil {

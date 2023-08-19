@@ -1,7 +1,6 @@
 package weather_test
 
 import (
-	"io"
 	"net/http"
 	"net/http/httptest"
 	"os"
@@ -64,14 +63,10 @@ func TestFormatURL_ReturnsCorrectURLForGivenInputs(t *testing.T) {
 
 func TestGetWeather_ReturnsExpectedConditions(t *testing.T) {
 	t.Parallel()
-	ts := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		f, err := os.Open("testdata/weather.json")
-		if err != nil {
-			t.Fatal(err)
-		}
-		defer f.Close()
-		io.Copy(w, f)
-	}))
+	ts := httptest.NewTLSServer(http.HandlerFunc(
+		func(w http.ResponseWriter, r *http.Request) {
+			http.ServeFile(w, r, "testdata/weather.json")
+		}))
 	defer ts.Close()
 	c := weather.NewClient("dummyAPIKey")
 	c.BaseURL = ts.URL

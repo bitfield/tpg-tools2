@@ -3,7 +3,6 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"log"
 	"os"
 	"sort"
 	"strings"
@@ -12,7 +11,8 @@ import (
 func main() {
 	f, err := os.Open("log.txt")
 	if err != nil {
-		log.Fatal(err)
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
 	}
 	defer f.Close()
 	input := bufio.NewScanner(f)

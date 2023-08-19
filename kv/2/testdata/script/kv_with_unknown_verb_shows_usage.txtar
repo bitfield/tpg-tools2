@@ -1,2 +1,2 @@
-exec kv bogus
-stdout 'Usage: kv'
+! exec kv bogus
+stderr 'Usage: kv'

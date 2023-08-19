@@ -1,7 +1,6 @@
 package weather_test
 
 import (
-	"io"
 	"net/http"
 	"net/http/httptest"
 	"os"
@@ -56,8 +55,8 @@ func TestParseResponse_ReturnsErrorGivenInvalidJSON(t *testing.T) {
 func TestFormatURL_ReturnsCorrectURLForGivenInputs(t *testing.T) {
 	t.Parallel()
 	c := weather.NewClient("dummyAPIKey")
-	location := "Paris,FR"
-	want := "https://api.openweathermap.org/data/2.5/weather?q=Paris,FR&appid=dummyAPIKey"
+	location := "New York,US"
+	want := "https://api.openweathermap.org/data/2.5/weather?q=New York,US&appid=dummyAPIKey"
 	got := c.FormatURL(location)
 	if !cmp.Equal(want, got) {
 		t.Error(cmp.Diff(want, got))
@@ -66,14 +65,10 @@ func TestFormatURL_ReturnsCorrectURLForGivenInputs(t *testing.T) {
 
 func TestGetWeather_ReturnsExpectedConditions(t *testing.T) {
 	t.Parallel()
-	ts := httptest.NewTLSServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		f, err := os.Open("testdata/weather.json")
-		if err != nil {
-			t.Fatal(err)
-		}
-		defer f.Close()
-		io.Copy(w, f)
-	}))
+	ts := httptest.NewTLSServer(http.HandlerFunc(
+		func(w http.ResponseWriter, r *http.Request) {
+			http.ServeFile(w, r, "testdata/weather.json")
+		}))
 	defer ts.Close()
 	c := weather.NewClient("dummyAPIKey")
 	c.BaseURL = ts.URL

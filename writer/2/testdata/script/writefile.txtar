@@ -22,5 +22,5 @@ stderr 'Usage: writefile'
 stderr 'flag needs an argument: -size'
 
 # With no arguments, show usage message
-! exec writefile
-stderr 'Usage: writefile'
+exec writefile
+stdout 'Usage: writefile'

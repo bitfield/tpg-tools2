@@ -60,7 +60,7 @@ func TestFromFile_SetsErrorGivenNonexistentFile(t *testing.T) {
 	t.Parallel()
 	p := pipeline.FromFile("doesnt-exist.txt")
 	if p.Error == nil {
-		t.Fatal("want error opening non-existent file, but got nil")
+		t.Fatal("want error opening non-existent file, got nil")
 	}
 }
 

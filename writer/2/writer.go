@@ -13,6 +13,10 @@ Creates the file PATH, containing SIZE_BYTES bytes, all zero.
 Example: writefile -size 1000 zeroes.dat`
 
 func Main() int {
+	if len(os.Args) < 2 {
+		fmt.Println(Usage)
+		return 0
+	}
 	size := flag.Int("size", 0, "Size in bytes")
 	flag.Parse()
 	if len(flag.Args()) < 1 {
@@ -22,6 +26,7 @@ func Main() int {
 	err := WriteToFile(flag.Args()[0], make([]byte, *size))
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
+		return 1
 	}
 	return 0
 }

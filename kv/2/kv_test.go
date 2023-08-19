@@ -97,14 +97,14 @@ func TestSaveSavesDataPersistently(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if v, _ := s2.Get("A"); v != "1" {
-		t.Fatalf("want A=1, got A=%s", v)
+	want := map[string]string{
+		"A": "1",
+		"B": "2",
+		"C": "3",
 	}
-	if v, _ := s2.Get("B"); v != "2" {
-		t.Fatalf("want B=2, got B=%s", v)
-	}
-	if v, _ := s2.Get("C"); v != "3" {
-		t.Fatalf("want C=3, got C=%s", v)
+	got := s2.All()
+	if !cmp.Equal(want, got) {
+		t.Error(cmp.Diff(want, got))
 	}
 }
 
@@ -133,7 +133,7 @@ func TestOpenStore_ReturnsErrorOnInvalidData(t *testing.T) {
 
 func TestAllReturnsExpectedMap(t *testing.T) {
 	t.Parallel()
-	s, err := kv.OpenStore("testdata/golden.store")
+	s, err := kv.OpenStore("dummy path")
 	if err != nil {
 		t.Fatal(err)
 	}

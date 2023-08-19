@@ -100,14 +100,18 @@ func Get(location, key string) (Conditions, error) {
 	return conditions, nil
 }
 
+const Usage = `Usage: weather LOCATION
+
+Example: weather London,UK`
+
 func Main() int {
+	if len(os.Args) < 2 {
+		fmt.Println(Usage)
+		return 0
+	}
 	key := os.Getenv("OPENWEATHERMAP_API_KEY")
 	if key == "" {
 		fmt.Fprintln(os.Stderr, "Please set the environment variable OPENWEATHERMAP_API_KEY.")
-		return 1
-	}
-	if len(os.Args) < 2 {
-		fmt.Fprintf(os.Stderr, "Usage: %s LOCATION\n\nExample: %[1]s London,UK\n", os.Args[0])
 		return 1
 	}
 	location := strings.Join(os.Args[1:], " ")
