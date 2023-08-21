@@ -18,6 +18,13 @@ func TestMain(m *testing.M) {
 	}))
 }
 
+func Test(t *testing.T) {
+	t.Parallel()
+	testscript.Run(t, testscript.Params{
+		Dir: "testdata/script",
+	})
+}
+
 func TestGreetUser_PromptsUserForANameAndRendersGreeting(t *testing.T) {
 	t.Parallel()
 	input := bytes.NewBufferString("Greg")
@@ -40,9 +47,4 @@ func TestGreetUser_PrintsHelloYouOnReadError(t *testing.T) {
 	if want != got {
 		t.Fatalf("wanted %q but got %q", want, got)
 	}
-}
-
-func TestScript(t *testing.T) {
-	t.Parallel()
-	testscript.Run(t, testscript.Params{Dir: "testdata/script"})
 }

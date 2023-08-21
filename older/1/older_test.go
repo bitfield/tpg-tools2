@@ -9,7 +9,7 @@ import (
 	"github.com/google/go-cmp/cmp"
 )
 
-func TestFiles_ReturnsFilesOlderThanGivenDuration(t *testing.T) {
+func TestFilesReturnsFilesOlderThanGivenDuration(t *testing.T) {
 	t.Parallel()
 	now := time.Now()
 	fsys := fstest.MapFS{

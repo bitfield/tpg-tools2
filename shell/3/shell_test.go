@@ -46,7 +46,7 @@ func TestNewSession_CreatesExpectedSession(t *testing.T) {
 	}
 }
 
-func TestRun_ProducesExpectedOutput(t *testing.T) {
+func TestRunProducesExpectedOutput(t *testing.T) {
 	t.Parallel()
 	in := strings.NewReader("echo hello\n\n")
 	out := new(bytes.Buffer)

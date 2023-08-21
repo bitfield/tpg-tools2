@@ -67,7 +67,7 @@ func TestGetReturnsNotOKIfKeyDoesNotExist(t *testing.T) {
 	}
 }
 
-func TestSave_ErrorsWhenPathUnwritable(t *testing.T) {
+func TestSaveErrorsWhenPathUnwritable(t *testing.T) {
 	t.Parallel()
 	s, err := kv.OpenStore("bogus/unwritable.store")
 	if err != nil {

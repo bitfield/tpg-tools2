@@ -15,7 +15,7 @@ func TestMain(m *testing.M) {
 	}))
 }
 
-func TestScript(t *testing.T) {
+func Test(t *testing.T) {
 	testscript.Run(t, testscript.Params{
 		Dir: "testdata/script",
 	})

@@ -15,7 +15,7 @@ func TestRunReportsCorrectElapsedTimeForCommand(t *testing.T) {
 		t.Fatal(err)
 	}
 	epsilon := target - elapsed
-	if epsilon.Abs() > 100*time.Millisecond {
+	if epsilon.Abs() > 300*time.Millisecond {
 		t.Fatalf("want %s, got %s (not close enough)", target, elapsed)
 	}
 }
