@@ -66,7 +66,7 @@ func TestFilesCorrectlyListsFilesInZIPArchive(t *testing.T) {
 func BenchmarkFilesOnDisk(b *testing.B) {
 	fsys := os.DirFS("testdata/tree")
 	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		_ = findgo.Files(fsys)
 	}
 }
@@ -79,7 +79,7 @@ func BenchmarkFilesInMemory(b *testing.B) {
 		"subfolder2/file.go":     {},
 	}
 	b.ResetTimer()
-	for i := 0; i < b.N; i++ {
+	for range b.N {
 		_ = findgo.Files(fsys)
 	}
 }
