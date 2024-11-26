@@ -56,7 +56,7 @@ func TestFormatURL_ReturnsCorrectURLForGivenInputs(t *testing.T) {
 	t.Parallel()
 	c := weather.NewClient("dummyAPIKey")
 	location := "New York,US"
-	want := "https://api.openweathermap.org/data/2.5/weather?q=New York,US&appid=dummyAPIKey"
+	want := "https://api.openweathermap.org/data/2.5/weather?q=New+York%2CUS&appid=dummyAPIKey"
 	got := c.FormatURL(location)
 	if !cmp.Equal(want, got) {
 		t.Error(cmp.Diff(want, got))

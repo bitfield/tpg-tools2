@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"net/url"
 	"os"
 	"strings"
 )
@@ -67,7 +68,7 @@ func NewClient(apiKey string) *Client {
 }
 
 func (c Client) FormatURL(location string) string {
-	return fmt.Sprintf("%s/data/2.5/weather?q=%s&appid=%s", c.BaseURL, location, c.APIKey)
+	return fmt.Sprintf("%s/data/2.5/weather?q=%s&appid=%s", c.BaseURL, url.QueryEscape(location), c.APIKey)
 }
 
 func (c *Client) GetWeather(location string) (Conditions, error) {
