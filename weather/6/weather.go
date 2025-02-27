@@ -105,26 +105,25 @@ const Usage = `Usage: weather LOCATION
 
 Example: weather London,UK`
 
-func Main() int {
+func Main() {
 	if len(os.Args) < 2 {
 		fmt.Println(Usage)
-		return 0
+		return
 	}
 	key := os.Getenv("OPENWEATHERMAP_API_KEY")
 	if key == "" {
 		fmt.Fprintln(os.Stderr, "Please set the environment variable OPENWEATHERMAP_API_KEY.")
-		return 1
+		os.Exit(1)
 	}
 	location := strings.Join(os.Args[1:], " ")
 	conditions, err := Get(location, key)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
-		return 1
+		os.Exit(1)
 	}
 	fmt.Printf("%s, %s: %s %.1fºC\n",
 		conditions.City,
 		conditions.CountryCode,
 		conditions.Summary,
 		conditions.Temperature.Celsius())
-	return 0
 }

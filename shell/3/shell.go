@@ -56,8 +56,7 @@ func CmdFromString(cmdLine string) (*exec.Cmd, error) {
 	return exec.Command(args[0], args[1:]...), nil
 }
 
-func Main() int {
+func Main() {
 	session := NewSession(os.Stdin, os.Stdout, os.Stderr)
 	session.Run()
-	return 0
 }

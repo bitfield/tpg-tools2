@@ -61,16 +61,15 @@ func CmdFromString(cmdLine string) (*exec.Cmd, error) {
 	return exec.Command(args[0], args[1:]...), nil
 }
 
-func Main() int {
+func Main() {
 	session := NewSession(os.Stdin, os.Stdout, os.Stderr)
 	transcript, err := os.Create("transcript.txt")
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
-		return 1
+		os.Exit(1)
 	}
 	defer transcript.Close()
 	session.Transcript = transcript
 	session.Run()
 	fmt.Println("[output file is 'transcript.txt']")
-	return 0
 }

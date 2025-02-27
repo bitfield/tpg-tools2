@@ -10,9 +10,9 @@ import (
 )
 
 func TestMain(m *testing.M) {
-	os.Exit(testscript.RunMain(m, map[string]func() int{
+	testscript.Main(m, map[string]func(){
 		"writefile": writer.Main,
-	}))
+	})
 }
 
 func Test(t *testing.T) {

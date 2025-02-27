@@ -16,7 +16,7 @@ Example: weather London,UK`
 func main() {
 	if len(os.Args) < 2 {
 		fmt.Println(Usage)
-		os.Exit(0)
+		return
 	}
 	key := os.Getenv("OPENWEATHERMAP_API_KEY")
 	if key == "" {

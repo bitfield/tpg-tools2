@@ -107,7 +107,7 @@ func (c *counter) Bytes() int {
 	return bytes
 }
 
-func Main() int {
+func Main() {
 	lineMode := flag.Bool("lines", false, "Count lines, not words")
 	byteMode := flag.Bool("bytes", false, "Count bytes, not words")
 	flag.Usage = func() {
@@ -121,12 +121,12 @@ func Main() int {
 	)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
-		return 1
+		os.Exit(1)
 	}
 	switch {
 	case *lineMode && *byteMode:
 		fmt.Fprintln(os.Stderr, "Please specify either '-lines' or '-bytes', but not both.")
-		return 1
+		os.Exit(1)
 	case *lineMode:
 		fmt.Println(c.Lines())
 	case *byteMode:
@@ -134,5 +134,4 @@ func Main() int {
 	default:
 		fmt.Println(c.Words())
 	}
-	return 0
 }

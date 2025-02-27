@@ -2,7 +2,6 @@ package count_test
 
 import (
 	"bytes"
-	"os"
 	"testing"
 
 	"github.com/bitfield/count"
@@ -11,9 +10,9 @@ import (
 )
 
 func TestMain(m *testing.M) {
-	os.Exit(testscript.RunMain(m, map[string]func() int{
+	testscript.Main(m, map[string]func(){
 		"count": count.Main,
-	}))
+	})
 }
 
 func Test(t *testing.T) {

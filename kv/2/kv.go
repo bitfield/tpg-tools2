@@ -74,70 +74,68 @@ understands the following commands:
 	created automatically the first time a value is set using
 	'kv set'.`
 
-func Main() int {
+func Main() {
 	if len(os.Args) < 2 {
 		fmt.Println(Usage)
-		return 0
+		return
 	}
 	command := os.Args[1]
 	switch command {
 	case "all":
-		return MainAll()
+		MainAll()
 	case "get":
-		return MainGet()
+		MainGet()
 	case "set":
-		return MainSet()
+		MainSet()
+	default:
+		fmt.Fprintln(os.Stderr, Usage)
+		os.Exit(1)
 	}
-	fmt.Fprintln(os.Stderr, Usage)
-	return 1
 }
 
-func MainAll() int {
+func MainAll() {
 	s, err := OpenStore("kv.store")
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
-		return 1
+		os.Exit(1)
 	}
 	for k, v := range s.All() {
 		fmt.Printf("%s=%s\n", k, v)
 	}
-	return 0
 }
 
-func MainGet() int {
+func MainGet() {
 	if len(os.Args) < 3 {
 		fmt.Fprintln(os.Stderr, Usage)
-		return 1
+		os.Exit(1)
 	}
 	s, err := OpenStore("kv.store")
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
-		return 1
+		os.Exit(1)
 	}
 	value, ok := s.Get(os.Args[2])
 	if !ok {
 		fmt.Fprintf(os.Stderr, "key %q not found\n", os.Args[2])
-		return 1
+		os.Exit(1)
 	}
 	fmt.Println(value)
-	return 0
 }
 
-func MainSet() int {
+func MainSet() {
 	if len(os.Args) < 4 {
 		fmt.Fprintln(os.Stderr, Usage)
-		return 1
+		os.Exit(1)
 	}
 	s, err := OpenStore("kv.store")
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
-		return 1
+		os.Exit(1)
 	}
 	s.Set(os.Args[2], os.Args[3])
 	err = s.Save()
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
-		return 1
+		os.Exit(1)
 	}
-	return 0
 }

@@ -3,7 +3,6 @@ package greet_test
 import (
 	"bytes"
 	"errors"
-	"os"
 	"testing"
 	"testing/iotest"
 
@@ -13,9 +12,9 @@ import (
 )
 
 func TestMain(m *testing.M) {
-	os.Exit(testscript.RunMain(m, map[string]func() int{
+	testscript.Main(m, map[string]func(){
 		"greet": greet.Main,
-	}))
+	})
 }
 
 func Test(t *testing.T) {

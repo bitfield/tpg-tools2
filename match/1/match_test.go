@@ -1,7 +1,6 @@
 package match_test
 
 import (
-	"os"
 	"testing"
 
 	"github.com/bitfield/match"
@@ -10,9 +9,9 @@ import (
 )
 
 func TestMain(m *testing.M) {
-	os.Exit(testscript.RunMain(m, map[string]func() int{
+	testscript.Main(m, map[string]func(){
 		"match": match.Main,
-	}))
+	})
 }
 
 func Test(t *testing.T) {

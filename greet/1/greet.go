@@ -17,7 +17,6 @@ func GreetUser(stdin io.Reader, stdout io.Writer) {
 	fmt.Fprintf(stdout, "Hello, %s.\n", name)
 }
 
-func Main() int {
+func Main() {
 	GreetUser(os.Stdin, os.Stdout)
-	return 0
 }

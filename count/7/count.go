@@ -93,26 +93,24 @@ func (c *counter) Words() int {
 	return words
 }
 
-func MainLines() int {
+func MainLines() {
 	c, err := NewCounter(
 		WithInputFromArgs(os.Args[1:]),
 	)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
-		return 1
+		os.Exit(1)
 	}
 	fmt.Println(c.Lines())
-	return 0
 }
 
-func MainWords() int {
+func MainWords() {
 	c, err := NewCounter(
 		WithInputFromArgs(os.Args[1:]),
 	)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
-		return 1
+		os.Exit(1)
 	}
 	fmt.Println(c.Words())
-	return 0
 }

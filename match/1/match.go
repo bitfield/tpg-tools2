@@ -70,14 +70,13 @@ func (m *matcher) PrintMatchingLines() {
 	}
 }
 
-func Main() int {
+func Main() {
 	m, err := NewMatcher(
 		WithSearchTextFromArgs(os.Args[1:]),
 	)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
-		return 1
+		os.Exit(1)
 	}
 	m.PrintMatchingLines()
-	return 0
 }
