@@ -88,7 +88,7 @@ func TestGetWeather_ReturnsExpectedConditions(t *testing.T) {
 	}
 }
 
-func TestCelsiusCorrectlyConvertsFahrenheitToCelsius(t *testing.T) {
+func TestCelsiusCorrectlyConvertsKelvinToCelsius(t *testing.T) {
 	t.Parallel()
 	input := weather.Temperature(274.15)
 	want := 1.0
