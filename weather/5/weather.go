@@ -1,7 +1,7 @@
 package weather
 
 import (
-	"encoding/json"
+	"encoding/json/v2"
 	"fmt"
 	"io"
 	"net/http"
@@ -21,11 +21,11 @@ func (t Temperature) Celsius() float64 {
 
 type OWMResponse struct {
 	Weather []struct {
-		Main string
-	}
+		Main string `json:"main"`
+	} `json:"weather"`
 	Main struct {
-		Temp float64
-	}
+		Temp float64 `json:"temp"`
+	} `json:"main"`
 }
 
 func ParseResponse(data []byte) (Conditions, error) {

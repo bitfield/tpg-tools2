@@ -1,7 +1,7 @@
 package kv
 
 import (
-	"encoding/json"
+	"encoding/json/v2"
 	"errors"
 	"fmt"
 	"io/fs"
@@ -26,7 +26,7 @@ func OpenStore(path string) (*store, error) {
 		return nil, err
 	}
 	defer f.Close()
-	err = json.NewDecoder(f).Decode(&s.data)
+	err = json.UnmarshalRead(f, &s.data)
 	if err != nil {
 		return nil, err
 	}
@@ -52,7 +52,7 @@ func (s store) Save() error {
 		return err
 	}
 	defer f.Close()
-	return json.NewEncoder(f).Encode(s.data)
+	return json.MarshalWrite(f, s.data)
 }
 
 const Usage = `Usage: kv COMMAND [key] [value]

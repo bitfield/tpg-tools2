@@ -20,6 +20,6 @@ func (p *Printer) Print() {
 	fmt.Fprintln(p.Output, "Hello, world")
 }
 
-func Main() {
+func Print() {
 	NewPrinter().Print()
 }

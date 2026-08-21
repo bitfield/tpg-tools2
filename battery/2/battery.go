@@ -1,7 +1,8 @@
 package battery
 
 import (
-	"encoding/json"
+	"encoding/json/jsontext"
+	"encoding/json/v2"
 )
 
 type Battery struct {
@@ -13,9 +14,11 @@ type Battery struct {
 }
 
 func (b Battery) ToJSON() string {
-	output, err := json.MarshalIndent(b, "", "  ")
+	output, err := json.Marshal(b)
 	if err != nil {
 		panic(err)
 	}
-	return string(output)
+	pretty := jsontext.Value(output)
+	pretty.Indent()
+	return string(pretty)
 }
