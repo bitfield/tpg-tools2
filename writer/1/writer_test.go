@@ -11,8 +11,8 @@ import (
 func TestWriteToFile_WritesGivenDataToFile(t *testing.T) {
 	t.Parallel()
 	path := t.TempDir() + "/write_test.txt"
-	want := []byte{1, 2, 3}
-	err := writer.WriteToFile(path, want)
+	data := []byte{1, 2, 3}
+	err := writer.WriteToFile(path, data)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -28,8 +28,8 @@ func TestWriteToFile_WritesGivenDataToFile(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if !cmp.Equal(want, got) {
-		t.Fatal(cmp.Diff(want, got))
+	if !cmp.Equal(data, got) {
+		t.Fatal(cmp.Diff(data, got))
 	}
 }
 
@@ -49,8 +49,8 @@ func TestWriteToFile_ClobbersExistingFile(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	want := []byte{1, 2, 3}
-	err = writer.WriteToFile(path, want)
+	data := []byte{1, 2, 3}
+	err = writer.WriteToFile(path, data)
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -58,8 +58,8 @@ func TestWriteToFile_ClobbersExistingFile(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	if !cmp.Equal(want, got) {
-		t.Fatal(cmp.Diff(want, got))
+	if !cmp.Equal(data, got) {
+		t.Fatal(cmp.Diff(data, got))
 	}
 }
 
